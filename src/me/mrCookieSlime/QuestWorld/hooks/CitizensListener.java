@@ -62,8 +62,8 @@ public class CitizensListener implements Listener {
 									lore.addText(task.getLore());
 									lore.color(ChatColor.DARK_AQUA);
 									lore.addText("\n\n    ");
-									lore.addText("ง7( งaงl\u2714 ง7)");
-									lore.addHoverEvent(HoverAction.SHOW_TEXT, "ง7Click to accept this Quest");
+									lore.addText("ยง7( ยงaยงl\u2714 ยง7)");
+									lore.addHoverEvent(HoverAction.SHOW_TEXT, "ยง7Click to accept this Quest");
 									lore.addClickEvent(new PlayerRunnable(3) {
 										
 										@Override
@@ -72,8 +72,8 @@ public class CitizensListener implements Listener {
 										}
 									});
 									lore.addText("      ");
-									lore.addText("ง7( ง4งl\u2718 ง7)");
-									lore.addHoverEvent(HoverAction.SHOW_TEXT, "ง7Click to do this Quest later");
+									lore.addText("ยง7( ยง4ยงl\u2718 ยง7)");
+									lore.addHoverEvent(HoverAction.SHOW_TEXT, "ยง7Click to do this Quest later");
 									lore.addClickEvent(new PlayerRunnable(3) {
 										
 										@Override

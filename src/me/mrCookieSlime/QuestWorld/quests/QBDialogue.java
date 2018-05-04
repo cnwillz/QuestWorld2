@@ -24,7 +24,7 @@ public class QBDialogue {
 	
 	@SuppressWarnings("deprecation")
 	public static void openDeletionConfirmation(Player p, final QWObject q) {
-		ChestMenu menu = new ChestMenu("§4§lAre you Sure?");
+		ChestMenu menu = new ChestMenu("Â§4Â§lAre you Sure?");
 		menu.addMenuOpeningHandler(new MenuOpeningHandler() {
 			
 			@Override
@@ -33,7 +33,7 @@ public class QBDialogue {
 			}
 		});
 		
-		menu.addItem(6, new CustomItem(new MaterialData(Material.WOOL, (byte) 14), "§cNo"));
+		menu.addItem(6, new CustomItem(new MaterialData(Material.WOOL, (byte) 14), "Â§cNo"));
 		menu.addMenuClickHandler(6, new MenuClickHandler() {
 			
 			@Override
@@ -46,11 +46,11 @@ public class QBDialogue {
 		});
 		
 		String tag = "" ;
-		if (q instanceof Quest) tag = "§ryour Quest \"" + ((Quest) q).getName() + "\"";
-		else if (q instanceof Category) tag = "§ryour Category \"" + ((Category) q).getName() + "\"";
-		else if (q instanceof QuestMission) tag = "§ryour Task";
+		if (q instanceof Quest) tag = "Â§ryour Quest \"" + ((Quest) q).getName() + "\"";
+		else if (q instanceof Category) tag = "Â§ryour Category \"" + ((Category) q).getName() + "\"";
+		else if (q instanceof QuestMission) tag = "Â§ryour Task";
 		
-		menu.addItem(2, new CustomItem(new MaterialData(Material.WOOL, (byte) 5), "§aYes I am sure", "", "§rThis will delete", tag));
+		menu.addItem(2, new CustomItem(new MaterialData(Material.WOOL, (byte) 5), "Â§aYes I am sure", "", "Â§rThis will delete", tag));
 		menu.addMenuClickHandler(2, new MenuClickHandler() {
 			
 			@Override
@@ -81,7 +81,7 @@ public class QBDialogue {
 		menu.build().open(p);
 	}@SuppressWarnings("deprecation")
 	public static void openResetConfirmation(Player p, final Quest q) {
-		ChestMenu menu = new ChestMenu("§4§lAre you Sure?");
+		ChestMenu menu = new ChestMenu("Â§4Â§lAre you Sure?");
 		menu.addMenuOpeningHandler(new MenuOpeningHandler() {
 			
 			@Override
@@ -90,7 +90,7 @@ public class QBDialogue {
 			}
 		});
 		
-		menu.addItem(6, new CustomItem(new MaterialData(Material.WOOL, (byte) 14), "§cNo"));
+		menu.addItem(6, new CustomItem(new MaterialData(Material.WOOL, (byte) 14), "Â§cNo"));
 		menu.addMenuClickHandler(6, new MenuClickHandler() {
 			
 			@Override
@@ -100,7 +100,7 @@ public class QBDialogue {
 			}
 		});
 		
-		menu.addItem(2, new CustomItem(new MaterialData(Material.WOOL, (byte) 5), "§aYes I am sure", "", "§rThis will reset this Quest's Database"));
+		menu.addItem(2, new CustomItem(new MaterialData(Material.WOOL, (byte) 5), "Â§aYes I am sure", "", "Â§rThis will reset this Quest's Database"));
 		menu.addMenuClickHandler(2, new MenuClickHandler() {
 			
 			@Override
@@ -128,7 +128,7 @@ public class QBDialogue {
 		int[] entities = {50, 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 120, 53};
 		int index = 1;
 		
-		menu.addItem(0, new CustomItem(new MaterialData(Material.MONSTER_EGG, (byte) -1), "&7Entity Type: &rPLAYER", "", "§e> Click to select"));
+		menu.addItem(0, new CustomItem(new MaterialData(Material.MONSTER_EGG, (byte) -1), "&7Entity Type: &rPLAYER", "", "Â§e> Click to select"));
 		menu.addMenuClickHandler(0, new MenuClickHandler() {
 			
 			@Override
@@ -143,7 +143,7 @@ public class QBDialogue {
 			try {
 				final EntityType entity = EntityType.fromId(i);
 				if (entity != null) {
-					menu.addItem(index, new CustomItem(new MaterialData(Material.MONSTER_EGG, (byte) i), "&7Entity Type: &r" + entity.toString(), "", "§e> Click to select"));
+					menu.addItem(index, new CustomItem(new MaterialData(Material.MONSTER_EGG, (byte) i), "&7Entity Type: &r" + entity.toString(), "", "Â§e> Click to select"));
 					menu.addMenuClickHandler(index, new MenuClickHandler() {
 						
 						@Override
@@ -164,13 +164,13 @@ public class QBDialogue {
 
 	public static void openCommandEditor(Player p, Quest quest) {
 		try {
-			p.sendMessage("§7§m----------------------------");
+			p.sendMessage("Â§7Â§m----------------------------");
 			for (int i = 0; i < quest.getCommands().size(); i++) {
 				String command = quest.getCommands().get(i);
-				new TellRawMessage("§4X §7" + command).addHoverEvent(HoverAction.SHOW_TEXT, "§7Click to remove this Command").addClickEvent(me.mrCookieSlime.CSCoreLibPlugin.general.Chat.TellRawMessage.ClickAction.RUN_COMMAND, "/questeditor delete_command " + quest.getCategory().getID() + " " + quest.getID() + " " + i).send(p);
+				new TellRawMessage("Â§4X Â§7" + command).addHoverEvent(HoverAction.SHOW_TEXT, "Â§7Click to remove this Command").addClickEvent(me.mrCookieSlime.CSCoreLibPlugin.general.Chat.TellRawMessage.ClickAction.RUN_COMMAND, "/questeditor delete_command " + quest.getCategory().getID() + " " + quest.getID() + " " + i).send(p);
 			}
-			new TellRawMessage("§2+ §7Add more Commands... (Click)").addHoverEvent(HoverAction.SHOW_TEXT, "§7Click to add a new Command").addClickEvent(me.mrCookieSlime.CSCoreLibPlugin.general.Chat.TellRawMessage.ClickAction.RUN_COMMAND, "/questeditor add_command " + quest.getCategory().getID() + " " + quest.getID()).send(p);
-			p.sendMessage("§7§m----------------------------");
+			new TellRawMessage("Â§2+ Â§7Add more Commands... (Click)").addHoverEvent(HoverAction.SHOW_TEXT, "Â§7Click to add a new Command").addClickEvent(me.mrCookieSlime.CSCoreLibPlugin.general.Chat.TellRawMessage.ClickAction.RUN_COMMAND, "/questeditor add_command " + quest.getCategory().getID() + " " + quest.getID()).send(p);
+			p.sendMessage("Â§7Â§m----------------------------");
 		} catch (Exception x) {
 			x.printStackTrace();
 		}
@@ -192,7 +192,7 @@ public class QBDialogue {
 			if (category != null) {
 				ItemStack item = category.getItem();
 				lore.add("");
-				lore.add("§7§oLeft Click to open");
+				lore.add("Â§7Â§oLeft Click to open");
 				ItemMeta im = item.getItemMeta();
 				im.setLore(lore);
 				item.setItemMeta(im);
@@ -227,9 +227,9 @@ public class QBDialogue {
 			if (quest != null) {
 				ItemStack item = quest.getItem();
 				lore.add("");
-				lore.add("§7§oClick to select it as a Requirement");
-				lore.add("§7§ofor the Quest:");
-				lore.add("§r" + q.getName());
+				lore.add("Â§7Â§oClick to select it as a Requirement");
+				lore.add("Â§7Â§ofor the Quest:");
+				lore.add("Â§r" + q.getName());
 				ItemMeta im = item.getItemMeta();
 				im.setLore(lore);
 				item.setItemMeta(im);

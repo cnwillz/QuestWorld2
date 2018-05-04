@@ -34,37 +34,23 @@ public class TaskListener implements Listener {
 
 	@EventHandler
 	public void onCraft(final CraftItemEvent e) {
-		QuestChecker.check((Player) e.getWhoClicked(), e, "CRAFT", new QuestListener() {
-			
-			@Override
-			public void onProgressCheck(Player p, QuestManager manager, QuestMission task, Object event) {
-				if (QuestWorld.getInstance().isItemSimiliar(e.getRecipe().getResult(), task.getItem())) manager.addProgress(task, e.getCurrentItem().getAmount());
-			}
-		});
+		QuestChecker.check((Player) e.getWhoClicked(), e, "CRAFT", (p, manager, task, event) -> {
+            if (QuestWorld.getInstance().isItemSimiliar(e.getRecipe().getResult(), task.getItem())) manager.addProgress(task, e.getCurrentItem().getAmount());
+        });
 	}
 	
 	@EventHandler
 	public void onFish(final PlayerFishEvent e) {
 		if (!(e.getCaught() instanceof Item)) return;
 		
-		QuestChecker.check(e.getPlayer(), e, "FISH", new QuestListener() {
-			
-			@Override
-			public void onProgressCheck(Player p, QuestManager manager, QuestMission task, Object event) {
-				if (QuestWorld.getInstance().isItemSimiliar(((Item) e.getCaught()).getItemStack(), task.getItem())) manager.addProgress(task, ((Item) e.getCaught()).getItemStack().getAmount());
-			}
-		});
+		QuestChecker.check(e.getPlayer(), e, "FISH", (p, manager, task, event) -> {
+            if (QuestWorld.getInstance().isItemSimiliar(((Item) e.getCaught()).getItemStack(), task.getItem())) manager.addProgress(task, ((Item) e.getCaught()).getItemStack().getAmount());
+        });
 	}
 	
 	@EventHandler
 	public void onXPChange(final PlayerLevelChangeEvent e) {
-		QuestChecker.check(e.getPlayer(), e, "REACH_LEVEL", new QuestListener() {
-			
-			@Override
-			public void onProgressCheck(Player p, QuestManager manager, QuestMission task, Object event) {
-				manager.setProgress(task, e.getNewLevel());
-			}
-		});
+		QuestChecker.check(e.getPlayer(), e, "REACH_LEVEL", (p, manager, task, event) -> manager.setProgress(task, e.getNewLevel()));
 	}
 	
 	@EventHandler

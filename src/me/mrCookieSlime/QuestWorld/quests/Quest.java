@@ -119,7 +119,7 @@ public class Quest extends QWObject {
 		cfg.setValue("id", id);
 		cfg.setValue("category", category.getID());
 		cfg.setValue("cooldown", String.valueOf(cooldown));
-		cfg.setValue("name", name.replaceAll("�", "&"));
+		cfg.setValue("name", name.replaceAll("§", "&"));
 		cfg.setValue("item", new ItemStack(item));
 		cfg.setValue("rewards.items", null);
 		cfg.setValue("rewards.money", money);
@@ -315,7 +315,8 @@ public class Quest extends QWObject {
 		for (String command: commands) {
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("@p", p.getName()));
 		}
-		
+
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&3任务&7]&a任务完成，你的奖励已经发放！"));
 		QuestWorld.getInstance().getManager(p).completeQuest(this);
 	}
 

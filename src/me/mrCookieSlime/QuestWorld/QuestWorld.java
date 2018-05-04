@@ -86,20 +86,20 @@ public class QuestWorld extends JavaPlugin implements Listener {
 			
 			instance = this;
 			
-			registerMissionType(new MissionType("CRAFT", true, true, false, SubmissionType.ITEM, "Craft %s", new MaterialData(Material.WORKBENCH)));
-			registerMissionType(new MissionType("SUBMIT", false, false, false, SubmissionType.ITEM, "Submit %s", new MaterialData(Material.CHEST)));
-			registerMissionType(new MissionType("DETECT", false, false, false, SubmissionType.ITEM, "Own %s", new MaterialData(Material.COMMAND)));
-			registerMissionType(new MissionType("KILL", true, true, false, SubmissionType.ENTITY, "Kill %s", new MaterialData(Material.IRON_SWORD)));
-			registerMissionType(new MissionType("KILL_NAMED_MOB", true, true, false, SubmissionType.ENTITY, "Kill %s", new MaterialData(Material.GOLD_SWORD)));
-			registerMissionType(new MissionType("FISH", true, true, false, SubmissionType.ITEM, "Catch %s �7using a Fishing Rod", new MaterialData(Material.FISHING_ROD)));
-			registerMissionType(new MissionType("REACH_LOCATION", false, false, true, SubmissionType.LOCATION, "Travel to %s", new MaterialData(Material.LEATHER_BOOTS)));
-			registerMissionType(new MissionType("JOIN", true, false, false, SubmissionType.INTEGER, "Join %s times", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
-			registerMissionType(new MissionType("PLAY_TIME", false, false, true, SubmissionType.TIME, "Play for %s", new MaterialData(Material.WATCH)));
-			registerMissionType(new MissionType("MINE_BLOCK", true, true, false, SubmissionType.BLOCK, "Mine %s", new MaterialData(Material.IRON_PICKAXE)));
-			registerMissionType(new MissionType("REACH_LEVEL", false, false, false, SubmissionType.INTEGER, "Reach Level %s", new MaterialData(Material.EXP_BOTTLE)));
+			registerMissionType(new MissionType("CRAFT", true, true, false, SubmissionType.ITEM, "§2合成 %s", new MaterialData(Material.WORKBENCH)));
+			registerMissionType(new MissionType("SUBMIT", false, false, false, SubmissionType.ITEM, "§2提交 %s", new MaterialData(Material.CHEST)));
+			registerMissionType(new MissionType("DETECT", false, false, false, SubmissionType.ITEM, "§2持有 %s", new MaterialData(Material.COMMAND)));
+			registerMissionType(new MissionType("KILL", true, true, false, SubmissionType.ENTITY, "§2击杀 %s", new MaterialData(Material.IRON_SWORD)));
+			registerMissionType(new MissionType("KILL_NAMED_MOB", true, true, false, SubmissionType.ENTITY, "§2击杀 %s", new MaterialData(Material.GOLD_SWORD)));
+			registerMissionType(new MissionType("FISH", true, true, false, SubmissionType.ITEM, "§2用鱼竿钓出 %s ", new MaterialData(Material.FISHING_ROD)));
+			registerMissionType(new MissionType("REACH_LOCATION", false, false, true, SubmissionType.LOCATION, "§2抵达位置 %s", new MaterialData(Material.LEATHER_BOOTS)));
+			registerMissionType(new MissionType("JOIN", true, false, false, SubmissionType.INTEGER, "§2进入服务器 %s 次", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
+			registerMissionType(new MissionType("PLAY_TIME", false, false, true, SubmissionType.TIME, "§2游戏时间达到 %s", new MaterialData(Material.WATCH)));
+			registerMissionType(new MissionType("MINE_BLOCK", true, true, false, SubmissionType.BLOCK, "§2采集 %s", new MaterialData(Material.IRON_PICKAXE)));
+			registerMissionType(new MissionType("REACH_LEVEL", false, false, false, SubmissionType.INTEGER, "§2等级达到 %s", new MaterialData(Material.EXP_BOTTLE)));
 			
 			if (getServer().getPluginManager().isPluginEnabled("Votifier")) {
-				registerMissionType(new MissionType("VOTIFIER_VOTE", true, false, false, SubmissionType.INTEGER, "Vote %s times", new MaterialData(Material.DIAMOND)));
+				registerMissionType(new MissionType("VOTIFIER_VOTE", true, false, false, SubmissionType.INTEGER, "投票 %s 次", new MaterialData(Material.DIAMOND)));
 				new VoteListener(this);
 			}
 			
@@ -109,17 +109,17 @@ public class QuestWorld extends JavaPlugin implements Listener {
 			}
 			
 			if (getServer().getPluginManager().isPluginEnabled("ASkyBlock")) {
-				registerMissionType(new MissionType("ASKYBLOCK_REACH_ISLAND_LEVEL", false, false, false, SubmissionType.INTEGER, "Reach Island Level %s", new MaterialData(Material.GRASS)));
+				registerMissionType(new MissionType("ASKYBLOCK_REACH_ISLAND_LEVEL", false, false, false, SubmissionType.INTEGER, "岛屿等级到达 %s", new MaterialData(Material.GRASS)));
 				new ASkyBlockListener(this);
 			}
 			
 			citizens = getServer().getPluginManager().isPluginEnabled("Citizens");
 			
 			if (citizens) {
-				registerMissionType(new MissionType("CITIZENS_INTERACT", false, false, false, SubmissionType.CITIZENS_INTERACT, "Talk to %s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
-				registerMissionType(new MissionType("CITIZENS_SUBMIT", false, false, false, SubmissionType.CITIZENS_ITEM, "Give %s�7 to %s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
-				registerMissionType(new MissionType("KILL_NPC", true, true, false, SubmissionType.CITIZENS_KILL, "Kill %s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
-				registerMissionType(new MissionType("ACCEPT_QUEST_FROM_NPC", false, false, false, SubmissionType.CITIZENS_INTERACT, "Accept this Quest by talking to %s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
+				registerMissionType(new MissionType("CITIZENS_INTERACT", false, false, false, SubmissionType.CITIZENS_INTERACT, "拜访%s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
+				registerMissionType(new MissionType("CITIZENS_SUBMIT", false, false, false, SubmissionType.CITIZENS_ITEM, "提交%s给%s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
+				registerMissionType(new MissionType("KILL_NPC", true, true, false, SubmissionType.CITIZENS_KILL, "击杀%s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
+				registerMissionType(new MissionType("ACCEPT_QUEST_FROM_NPC", false, false, false, SubmissionType.CITIZENS_INTERACT, "拜访%s", new MaterialData(Material.SKULL_ITEM, (byte) 3)));
 				new CitizensListener(this);
 			}
 			

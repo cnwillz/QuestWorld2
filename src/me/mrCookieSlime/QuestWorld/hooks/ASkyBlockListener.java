@@ -11,7 +11,7 @@ import me.mrCookieSlime.QuestWorld.quests.QuestOfflineListener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.wasteofplastic.askyblock.events.IslandLevelEvent;
+//import com.wasteofplastic.askyblock.events.IslandLevelEvent;
 
 public class ASkyBlockListener implements Listener {
 
@@ -19,14 +19,14 @@ public class ASkyBlockListener implements Listener {
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 	}
 
-	@EventHandler
-	public void onWin(final IslandLevelEvent e) {
-		QuestChecker.check(e.getPlayer(), e, "ASKYBLOCK_REACH_ISLAND_LEVEL", new QuestOfflineListener() {
-			
-			@Override
-			public void onProgressCheck(UUID uuid, QuestManager manager, QuestMission task, Object event) {
-				manager.setProgress(task, e.getLevel());
-			}
-		});
-	}
+//	@EventHandler
+//	public void onWin(final IslandLevelEvent e) {
+//		QuestChecker.check(e.getPlayer(), e, "ASKYBLOCK_REACH_ISLAND_LEVEL", new QuestOfflineListener() {
+//
+//			@Override
+//			public void onProgressCheck(UUID uuid, QuestManager manager, QuestMission task, Object event) {
+//				manager.setProgress(task, e.getLevel());
+//			}
+//		});
+//	}
 }

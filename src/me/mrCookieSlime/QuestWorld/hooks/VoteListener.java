@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.vexsoftware.votifier.model.VotifierEvent;
+//import com.vexsoftware.votifier.model.VotifierEvent;
 
 public class VoteListener implements Listener {
 
@@ -19,18 +19,18 @@ public class VoteListener implements Listener {
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 	}
 
-	@EventHandler
-	public void onVote(VotifierEvent e) {
-		@SuppressWarnings("deprecation")
-		Player p = Bukkit.getPlayer(e.getVote().getUsername());
-		if (p != null) {
-			QuestChecker.check(p, e, "VOTIFIER_VOTE", new QuestListener() {
-				
-				@Override
-				public void onProgressCheck(Player p, QuestManager manager, QuestMission task, Object event) {
-					manager.addProgress(task, 1);
-				}
-			});
-		}
-	}
+//	@EventHandler
+//	public void onVote(VotifierEvent e) {
+//		@SuppressWarnings("deprecation")
+//		Player p = Bukkit.getPlayer(e.getVote().getUsername());
+//		if (p != null) {
+//			QuestChecker.check(p, e, "VOTIFIER_VOTE", new QuestListener() {
+//
+//				@Override
+//				public void onProgressCheck(Player p, QuestManager manager, QuestMission task, Object event) {
+//					manager.addProgress(task, 1);
+//				}
+//			});
+//		}
+//	}
 }

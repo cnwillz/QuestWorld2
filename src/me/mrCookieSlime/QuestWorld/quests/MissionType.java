@@ -24,7 +24,7 @@ public class MissionType {
 		TIME,
 		CITIZENS_INTERACT,
 		CITIZENS_KILL, 
-		BLOCK;
+		BLOCK,
 		
 	}
 	
@@ -47,25 +47,25 @@ public class MissionType {
 		name = ChatColor.translateAlternateColorCodes('&', name);
 		switch (type) {
 		case ENTITY: {
-			return String.format(format, amount + "x " + (spawners ? "naturally spawned " : "") + StringUtils.format(entity.toString()) + ((!name.equals("") ? (" named งr" + name): "") + "ง7"));
+			return String.format(format, amount + "x " + name + "ยง7");
 		}
 		case ITEM: {
-			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false) + "ง7");
+			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false) + "ยง7");
 		}
 		case BLOCK: {
-			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false) + "ง7");
+			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false) + "ยง7");
 		}
 		case CITIZENS_ITEM: {
 			NPC npc = CitizensAPI.getNPCRegistry().getById(citizenID);
-			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false), "ง7" + (npc == null ? "N/A": npc.getName()) + "ง7");
+			return String.format(format, amount + "x " + StringUtils.formatItemName(item, false), "ยง7" + (npc == null ? "N/A": npc.getName()) + "ยง7");
 		}
 		case CITIZENS_INTERACT: {
 			NPC npc = CitizensAPI.getNPCRegistry().getById(citizenID);
-			return String.format(format, "ง7" + (npc == null ? "N/A": npc.getName()) + "ง7");
+			return String.format(format, "ยง7" + (npc == null ? "N/A": npc.getName()) + "ยง7");
 		}
 		case CITIZENS_KILL: {
 			NPC npc = CitizensAPI.getNPCRegistry().getById(citizenID);
-			return String.format(format, "ง7" + (npc == null ? "N/A": npc.getName()) + "ง7 " + amount + " times");
+			return String.format(format, "ยง7" + (npc == null ? "N/A": npc.getName()) + "ยง7 " + amount + " times");
 		}
 		case INTEGER: {
 			return String.format(format, amount);
@@ -74,7 +74,7 @@ public class MissionType {
 			return String.format(format, (amount / 60) + "h " + (amount % 60) + "m");
 		}
 		case LOCATION: {
-			return String.format(format, name.equals("") ? ("X: " + location.getBlockX() + " Y: " + location.getBlockY() + " Z: " + location.getBlockZ() + "ง7"): ("งr" + name));
+			return String.format(format, name.equals("") ? ("X: " + location.getBlockX() + " Y: " + location.getBlockY() + " Z: " + location.getBlockZ() + "ยง7"): ("ยงr" + name));
 		}
 		default:
 			return String.format(format, name);

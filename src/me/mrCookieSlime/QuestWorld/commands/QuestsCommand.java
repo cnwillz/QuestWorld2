@@ -36,14 +36,14 @@ public class QuestsCommand implements CommandExecutor {
 							if (args.length == 2) QuestBook.openQuest((Player) sender, category.getQuest(Integer.parseInt(args[1])), false, false);
 							else QuestBook.openCategory((Player) sender, category, false);
 						}
-						else sender.sendMessage("ง4Unknown Category: งc" + args[0]);
+						else sender.sendMessage("ยง4Unknown Category: ยงc" + args[0]);
 					} catch(Exception x) {
-						 sender.sendMessage("ง4Unknown Category: งc" + args[0]);
+						 sender.sendMessage("ยง4Unknown Category: ยงc" + args[0]);
 					}
 				}
 			}
 		}
-		else sender.sendMessage("ง4You are not a Player");
+		else sender.sendMessage("ยง4You are not a Player");
 		return true;
 	}
 

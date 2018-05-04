@@ -203,14 +203,15 @@ public class QuestManager {
 	public void setProgress(QuestMission task, int amount) {
 		if (!updateTimeframe(this.uuid, task, amount)) return;
 		cfg.setValue(task.getQuest().getCategory().getID() + "." + task.getQuest().getID() + ".mission." + task.getID() + ".progress", amount > task.getAmount() ? task.getAmount(): amount);
-		
-		if (amount >= task.getAmount()) {
-			Player player = Bukkit.getPlayer(uuid);
-			if (player != null) {
+
+		Player player = Bukkit.getPlayer(uuid);
+		if (player != null) {
+			if(amount > 0)
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&3任务&7]" + task.getText() + " " + task.getProgress(player)));
+			if (amount >= task.getAmount()) {
 				sendQuestDialogue(player, task, task.getDialogue().iterator());
 			}
 		}
-		
 		if (!task.getType().getID().equals("ACCEPT_QUEST_FROM_NPC") && task.getQuest().supportsParties()) {
 			Party party = getParty();
 			if (party != null) {
@@ -218,7 +219,6 @@ public class QuestManager {
 					if (!uuid.equals(this.uuid)) {
 						updateTimeframe(uuid, task, amount);
 						if (amount >= task.getAmount()) {
-							Player player = Bukkit.getPlayer(uuid);
 							if (player != null) QuestWorld.getInstance().getLocalization().sendTranslation(player, "notifications.task-completed", false, new Variable("<Quest>", task.getQuest().getName()));
 						}
 						QuestWorld.getInstance().getManager(Bukkit.getOfflinePlayer(uuid)).toConfig().setValue(task.getQuest().getCategory().getID() + "." + task.getQuest().getID() + ".mission." + task.getID() + ".progress", amount);

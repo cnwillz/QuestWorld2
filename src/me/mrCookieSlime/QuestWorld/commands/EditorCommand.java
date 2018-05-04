@@ -55,12 +55,12 @@ public class EditorCommand implements CommandExecutor {
 						input.close();
 
 						QuestWorld.getInstance().load();
-						sender.sendMessage("§7Successfully installed the Preset §a" + args[1] + ".zip");
+						sender.sendMessage("Â§7Successfully installed the Preset Â§a" + args[1] + ".zip");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
-				else sender.sendMessage("§cThe Preset §4" + args[1] + ".zip §ccould not be found");
+				else sender.sendMessage("Â§cThe Preset Â§4" + args[1] + ".zip Â§ccould not be found");
 			}
 			else if (args.length == 2 && args[0].equalsIgnoreCase("export")) {
 				File file = new File("plugins/QuestWorld/presets/" + args[1] + ".zip");
@@ -88,7 +88,7 @@ public class EditorCommand implements CommandExecutor {
 						output.closeEntry();
 					}
 					output.close();
-					sender.sendMessage("§7Successfully saved the Preset §a" + args[1] + ".zip");
+					sender.sendMessage("Â§7Successfully saved the Preset Â§a" + args[1] + ".zip");
 				} catch(IOException e) {
 					e.printStackTrace();
 				}
@@ -97,7 +97,7 @@ public class EditorCommand implements CommandExecutor {
 				if (sender instanceof Player) {
 					QuestBook.openEditor((Player) sender);
 				}
-				else sender.sendMessage("§4You are not a Player");
+				else sender.sendMessage("Â§4You are not a Player");
 			}
 			else if (args.length == 4 && args[0].equalsIgnoreCase("delete_command") && sender instanceof Player) {
 				Quest quest = QuestWorld.getInstance().getCategory(Integer.parseInt(args[1])).getQuest(Integer.parseInt(args[2]));
@@ -106,15 +106,15 @@ public class EditorCommand implements CommandExecutor {
 			}
 			else if (args.length == 3 && args[0].equalsIgnoreCase("add_command") && sender instanceof Player) {
 				Quest quest = QuestWorld.getInstance().getCategory(Integer.parseInt(args[1])).getQuest(Integer.parseInt(args[2]));
-				sender.sendMessage("§7Type in your desired Command:");
-				sender.sendMessage("§7Usable Variables: @p (Username)");
+				sender.sendMessage("Â§7Type in your desired Command:");
+				sender.sendMessage("Â§7Usable Variables: @p (Username)");
 				QuestWorld.getInstance().storeInput(((Player) sender).getUniqueId(), new Input(InputType.COMMAND_ADD, quest));
 			}
 			else {
-				sender.sendMessage("§4Usage: §c/questeditor <gui/import <File> /export <File> >");
+				sender.sendMessage("Â§4Usage: Â§c/questeditor <gui/import <File> /export <File> >");
 			}
 		}
-		else sender.sendMessage("§4You are not allowed to do this");
+		else sender.sendMessage("Â§4You are not allowed to do this");
 		return true;
 	}
 
